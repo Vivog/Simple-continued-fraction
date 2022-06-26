@@ -1,0 +1,22 @@
+from fractions import Fraction
+
+fr = Fraction(input()) # something like '20/11'
+a_0 = int(fr)
+
+
+def fr_ost(fr, str):
+    while fr.denominator > 1:
+        a_n = int(fr)
+        str += f'{a_n} '
+        fr = Fraction(fr.denominator, fr.numerator % fr.denominator)
+    return str, fr.numerator
+
+
+if fr.numerator % fr.denominator == 0:
+    str = f'{a_0}'
+else:
+    fr = Fraction(fr.denominator, fr.numerator % fr.denominator)
+    str = f'{a_0} '
+    nums = fr_ost(fr, str)
+    str = nums[0] + f'{nums[1]}'
+print(str) # answer is coefficients of simple-continued-fraction, something like '1 1 4 2'
